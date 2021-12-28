@@ -1,4 +1,35 @@
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+// actions de redux
+import { crearProductoNuevoAction } from "../actions/productosActions";
+
 const NuevoProducto = () => {
+
+    const [nombre, guardarNombre] = useState("");
+    const [precio, guardarPrecio] = useState(0);
+
+    // Utilizar use dispatch y te crea una funcion
+    const dispatch = useDispatch();
+
+
+    // manda a llamar el action de productosActions
+    const agregarProducto = producto => dispatch(crearProductoNuevoAction(producto));
+
+    //cuando el usuario haga submit
+    const submitNuevoProducto = e => {
+        e.preventDefault();
+        // validar
+        if(nombre.trim() == "" || precio <= 0) return;
+        // si no hay errores
+
+        // crear el nuevo producto
+        agregarProducto({
+            nombre,
+            precio
+        });
+    }
+
     return (
         <div className="row justify-content-center">
             <div className="col-md-8">
@@ -7,7 +38,9 @@ const NuevoProducto = () => {
                         <h2 className="text-center mb-4 font-weight-bold">
                             Agregar nuevo producto
                         </h2>
-                        <form>
+                        <form
+                            onSubmit={submitNuevoProducto}
+                        >
                             <div className="form-group">
                                 <label>Nombre</label>
                                 <input 
@@ -15,7 +48,8 @@ const NuevoProducto = () => {
                                     type="text"
                                     className="form-control"
                                     placeholder="Nombre de producto"
-                                    required
+                                    value={nombre}
+                                    onChange={e => guardarNombre(e.target.value)}
                                 />
                             </div>
                             <div className="form-group">
@@ -25,7 +59,8 @@ const NuevoProducto = () => {
                                     type="number"
                                     className="form-control"
                                     placeholder="Precio de producto"
-                                    required
+                                    value={precio}
+                                    onChange={e => guardarPrecio(Number(e.target.value))}
                                 />
                             </div>
                             <button
