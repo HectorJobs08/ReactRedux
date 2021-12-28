@@ -12,7 +12,7 @@ export function crearProductoNuevoAction(producto){
         dispatch(agregarProducto());
         try{
             console.log(clienteAxios.defaults);
-            await clienteAxios.post("/productos", producto);
+            await clienteAxios.post("/hola", producto);
             dispatch(agregarProductoExito(producto));
         }catch(err){
             console.log(err);
