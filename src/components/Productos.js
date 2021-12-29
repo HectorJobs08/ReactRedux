@@ -28,16 +28,18 @@ const Productos = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    { productos.length == 0 ? "No hay productos" : (
-                        productos.map(producto => {
+                    { productos.length == 0 ? "No hay productos" : 
+                        productos.map(producto => (
                             <Producto 
                                 key={producto.id}
                                 producto={producto}
                             />
-                        })
-                    )}
+                        ))
+                    }
                 </tbody>
             </table>
+
+            {/* {JSON.stringify(productos)} */}
         </Fragment>
     )
 }

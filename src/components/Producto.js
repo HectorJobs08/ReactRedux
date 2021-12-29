@@ -1,3 +1,5 @@
+import {Link} from "react-router-dom";
+
 const Producto = ({producto}) => {
 
     const {id, nombre, precio} = producto;
@@ -6,7 +8,8 @@ const Producto = ({producto}) => {
             <td>{nombre}</td>
             <td>$ {precio}</td>
             <td>
-                Hola mundo
+                <Link to={`/productos/editar/${id}`} className="btn btn-primary mr-2">Editar</Link>
+                <button className="btn btn-danger" type="button">Eliminar</button>
             </td>
         </tr>
     )

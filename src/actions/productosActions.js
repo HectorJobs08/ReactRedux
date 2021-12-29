@@ -76,8 +76,6 @@ export function obtenerProductosAction() {
         try{
             let products = (await clienteAxios.get("/productos")).data;
             dispatch(descargarProductosExito(products));
-
-            return products;
         }catch(err){
             dispatch(descargarProductosError(true));
             Swal.fire({
