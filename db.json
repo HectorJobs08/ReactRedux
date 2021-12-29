@@ -24,6 +24,11 @@
       "nombre": "Monster",
       "precio": 40,
       "id": 12
+    },
+    {
+      "nombre": "Samsung",
+      "precio": 9999,
+      "id": 13
     }
   ]
 }
